@@ -3,8 +3,8 @@
 public record ProductDto(
     Guid Id
     , string Name
-    , List<string> Categories
+    , List<string> Category
     , string Description
-    , string ImageFilename
+    , string ImageFile
     , decimal Price
     );

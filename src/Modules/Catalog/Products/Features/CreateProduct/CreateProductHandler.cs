@@ -2,7 +2,7 @@
 
 public record CreateProductCommand(ProductDto Product)
     : ICommand<CreateProductResult>;
-public record CreateProductResult(Guid ProductId);
+public record CreateProductResult(Guid Id);
 
 
 public class CreateProductHandler(CatalogDbContext dbContext)
@@ -27,9 +27,9 @@ public class CreateProductHandler(CatalogDbContext dbContext)
         var product = Product.Create(
             Guid.NewGuid(),
             productDto.Name,
-            productDto.Categories,
+            productDto.Category,
             productDto.Description,
-            productDto.ImageFilename,
+            productDto.ImageFile,
             productDto.Price);
 
 
