@@ -29,9 +29,9 @@ public class UpdateProductHandler(CatalogDbContext dbContext)
     {
         product.Update(
             productDto.Name,
-            productDto.Categories,
+            productDto.Category,
             productDto.Description,
-            productDto.ImageFilename,
+            productDto.ImageFile,
             productDto.Price
         );
     }
