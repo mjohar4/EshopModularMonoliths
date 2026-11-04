@@ -3,6 +3,13 @@ services:
     image: postgres:17
     environment:
       POSTGRES_DB: eshopdb
+  seq:
+    image: datalust/seq:latest
+    volumes:
+      - seq-data:/data
+
+
 
 volumes:
   postgres_eshopdb:
+  seq-data:
