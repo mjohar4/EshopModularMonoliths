@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Behaviors;
 using Shared.Data.Interceptors;
 
 
@@ -16,10 +16,13 @@ public static class CatalogModule
         // Api Endpoint services
 
         // Application Use Case services
-        services.AddMediatR(Confic =>
+        services.AddMediatR(config =>
         {
-            Confic.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            config.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
         // Data - Infrastructure services
         var connectionString = configuration.GetConnectionString("Database");
 
